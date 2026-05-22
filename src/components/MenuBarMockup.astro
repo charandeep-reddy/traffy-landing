@@ -1,44 +1,154 @@
 ---
 interface Props {
   large?: boolean;
-  class?: string;
 }
 
-const { large, class: className } = Astro.props;
+const { large } = Astro.props;
 ---
 
-<div class={`inline-flex items-center gap-3
-    ${large
-      ? 'bg-[rgba(44,44,46,0.9)] backdrop-blur-xl rounded-[10px] px-5 py-2.5 border border-[rgba(255,255,255,0.1)] text-base shadow-[0_0_0_1px_rgba(0,0,0,0.2),0_8px_40px_rgba(0,0,0,0.5),0_0_100px_rgba(0,122,255,0.12)]'
-      : 'bg-[rgba(44,44,46,0.85)] backdrop-blur-xl rounded-lg px-4 py-[7px] border border-[rgba(255,255,255,0.08)] shadow-[0_0_0_1px_rgba(0,0,0,0.2),0_4px_24px_rgba(0,0,0,0.4),0_0_80px_rgba(0,122,255,0.1)] animate-float'
-    }
-    ${className || ''}`}>
-  <!-- Left: Apple logo + time -->
-  <div class="flex items-center gap-2.5">
-    <span class="text-sm opacity-85">&#63743;</span>
-    <span class="font-medium opacity-90 text-sm">9:41</span>
-  </div>
-
-  <!-- Separator -->
-  <div class="w-px h-4 bg-white/15"></div>
-
-  <!-- Right: Wi-Fi icon + speed -->
-  <div class="flex items-center gap-3">
-    <svg class="opacity-60" width="14" height="11" viewBox="0 0 16 12" fill="currentColor">
-      <path d="M8 0C5.1 0 2.4 1.2 0.4 3.2L8 11.5L15.6 3.2C13.6 1.2 10.9 0 8 0ZM8 9.5L2.5 4C4.1 2.6 6 1.8 8 1.8C10 1.8 11.9 2.6 13.5 4L8 9.5Z"/>
-    </svg>
-
-    <div class={`flex items-center ${large ? 'gap-[18px]' : 'gap-[14px]'} font-mono text-xs font-medium`}>
-      <span class="flex items-center gap-[3px]">
-        <span class="text-accent text-[10px]">↓</span>
-        <span class="tabular-nums min-w-[36px] text-right speed-anim-down">24.1</span>
-        <span class="opacity-50 text-[10px] ml-[1px]">MB/s</span>
+<div class="mockup animate-float" data-large={large ? 'true' : 'false'}>
+  <div class="mockup-inner">
+    <div class="mockup-left">
+      <span class="mockup-time">9:41</span>
+    </div>
+    <div class="mockup-divider"></div>
+    <div class="mockup-right">
+      <span class="mockup-speed down">
+        <span class="arrow">↓</span>
+        <span class="value" id="down-val">24.1</span>
+        <span class="unit">MB/s</span>
       </span>
-      <span class="flex items-center gap-[3px]">
-        <span class="text-success text-[10px]">↑</span>
-        <span class="tabular-nums min-w-[36px] text-right speed-anim-up">4.8</span>
-        <span class="opacity-50 text-[10px] ml-[1px]">MB/s</span>
+      <span class="mockup-speed up">
+        <span class="arrow">↑</span>
+        <span class="value" id="up-val">4.8</span>
+        <span class="unit">MB/s</span>
       </span>
     </div>
   </div>
 </div>
+
+<script>
+  const downEl = document.getElementById('down-val');
+  const upEl = document.getElementById('up-val');
+
+  function rand(min: number, max: number) {
+    return (Math.random() * (max - min) + min).toFixed(1);
+  }
+
+  function tick() {
+    downEl.textContent = rand(12, 45);
+    upEl.textContent = rand(1.5, 8);
+  }
+
+  setInterval(tick, 1800);
+  tick();
+</script>
+
+<style>
+  .mockup {
+    display: inline-flex;
+    border-radius: 10px;
+    padding: 10px 18px;
+    background: rgba(44, 44, 46, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.3),
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      0 0 80px rgba(0, 122, 255, 0.08);
+  }
+
+  .mockup[data-large="true"] {
+    padding: 14px 24px;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.3),
+      0 8px 40px rgba(0, 0, 0, 0.5),
+      0 0 120px rgba(0, 122, 255, 0.12);
+  }
+
+  .mockup-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .mockup[data-large="true"] .mockup-inner {
+    gap: 18px;
+  }
+
+  .mockup-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .mockup-time {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+  }
+
+  .mockup[data-large="true"] .mockup-time {
+    font-size: 15px;
+  }
+
+  .mockup-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mockup[data-large="true"] .mockup-divider {
+    height: 20px;
+  }
+
+  .mockup-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', 'SF Mono', SFMono-Regular, ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .mockup[data-large="true"] .mockup-right {
+    font-size: 14px;
+    gap: 20px;
+  }
+
+  .mockup-speed {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .arrow {
+    font-size: 10px;
+    opacity: 0.55;
+  }
+
+  .mockup[data-large="true"] .arrow {
+    font-size: 12px;
+  }
+
+  .value {
+    font-variant-numeric: tabular-nums;
+    min-width: 38px;
+    text-align: right;
+    letter-spacing: 0.01em;
+  }
+
+  .unit {
+    font-size: 10px;
+    opacity: 0.45;
+    margin-left: 1px;
+  }
+
+  .mockup[data-large="true"] .unit {
+    font-size: 11px;
+  }
+</style>
