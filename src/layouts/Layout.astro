@@ -64,14 +64,14 @@ import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
   <slot />
 
   <!-- Footer -->
-  <footer class="border-t border-border py-6 px-6">
-    <div class="max-w-[980px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-6">
-        <a href={REPO_URL} class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">GitHub</a>
-        <a href={LICENSE_URL} class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">MIT License</a>
-        <a href="https://psydevx.app" class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">psydevx.app</a>
+  <footer class="border-t border-border py-12 px-6">
+    <div class="max-w-[980px] mx-auto flex flex-col items-center gap-4 text-center">
+      <div class="flex items-center gap-5 text-xs text-text-muted">
+        <a href={REPO_URL} class="no-underline hover:text-text transition-colors">GitHub</a>
+        <a href={LICENSE_URL} class="no-underline hover:text-text transition-colors">MIT License</a>
+        <a href="https://psydevx.app" class="no-underline hover:text-accent transition-colors font-medium">Made by psydevx</a>
       </div>
-      <span class="text-text-muted text-xs">&copy; 2026 Traffy. Free forever.</span>
+      <p class="text-[11px] text-text-muted">&copy; 2026 Traffy</p>
     </div>
   </footer>
 

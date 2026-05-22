@@ -1,9 +1,8 @@
 ---
-import MenuBarMockup from './MenuBarMockup.astro';
 import { DOWNLOAD_URL, REPO_URL } from '../constants';
 ---
 
-<section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden">
+<section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
   <div class="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] pointer-events-none"
        style="background: radial-gradient(ellipse at center, rgba(0,122,255,0.08) 0%, transparent 60%);">
   </div>
@@ -15,26 +14,17 @@ import { DOWNLOAD_URL, REPO_URL } from '../constants';
               -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);">
   </div>
 
-  <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent-dim border border-accent/20 text-accent text-xs font-medium mb-8 reveal">
-    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot"></span>
-    Free &amp; Open Source
-  </div>
-
-  <h1 class="font-display text-[clamp(42px,8vw,88px)] font-bold tracking-[-0.04em] leading-[1.05] mb-6 reveal reveal-delay-1">
+  <h1 class="font-display text-[clamp(48px,10vw,96px)] font-bold tracking-[-0.04em] leading-[1.05] mb-5 reveal">
     Your network speed.<br>
     <span class="text-gradient">Always visible.</span>
   </h1>
 
-  <p class="text-text-secondary text-[clamp(16px,2vw,22px)] max-w-[540px] leading-relaxed mb-12 reveal reveal-delay-2">
+  <p class="text-text-secondary text-[clamp(16px,2vw,21px)] max-w-[520px] leading-relaxed mb-12 reveal reveal-delay-1">
     Real-time upload and download speeds in your macOS menu bar.
     No apps to open. No dashboards to check.
   </p>
 
-  <div class="mb-14 reveal reveal-delay-3">
-    <MenuBarMockup />
-  </div>
-
-  <div class="flex flex-wrap gap-3 justify-center reveal reveal-delay-4">
+  <div class="flex flex-wrap gap-3 justify-center reveal reveal-delay-2">
     <a href={DOWNLOAD_URL}
        class="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-white rounded-full font-semibold text-sm no-underline
               transition-all duration-300 hover:scale-105 glow-accent">
@@ -52,9 +42,4 @@ import { DOWNLOAD_URL, REPO_URL } from '../constants';
       View on GitHub
     </a>
   </div>
-    <p class="text-text-muted text-xs mt-6 max-w-[400px] mx-auto leading-relaxed reveal">
-    macOS may show an unverified developer warning.
-    <br class="sm:hidden">
-    Try opening Traffy, then go to <span class="text-accent">System Settings → Privacy & Security → Open Anyway</span>
-  </p>
 </section>
