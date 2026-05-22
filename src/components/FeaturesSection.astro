@@ -1,0 +1,39 @@
+---
+const features = [
+  { icon: 'split', title: 'Split or Combined', desc: "See both upload and download speeds, or just the direction that's active. Your call." },
+  { icon: 'scale', title: 'Bytes or Bits', desc: 'B/s, KB/s, MB/s or b/s, Kbps, Mbps. Whichever unit makes sense for you.' },
+  { icon: 'clock', title: 'Your Interval', desc: 'Refresh every 1, 2, or 3 seconds. However you like to see your network breathe.' },
+  { icon: 'power', title: 'Launch at Login', desc: "Starts when you start. Lives in the menu bar. Never in the dock." },
+  { icon: 'shield', title: 'Zero Bloat', desc: 'Pure Swift. Reads local system counters. No network calls. No telemetry. No tracking.' },
+  { icon: 'device', title: 'Native Feel', desc: 'macOS 13+. Apple Silicon and Intel. Feels like it grew up in your menu bar.' },
+];
+---
+
+<section class="max-w-[1100px] mx-auto px-6 py-20 sm:py-[100px] lg:py-[120px]" id="features">
+  <div class="text-center mb-10 sm:mb-14 lg:mb-16 reveal">
+    <h2 class="font-display text-[clamp(24px,4vw,44px)] font-bold tracking-[-0.03em] mb-2 sm:mb-3">
+      Everything you need.<br class="sm:hidden">
+      <span class="text-text-secondary">Nothing you don't.</span>
+    </h2>
+    <p class="text-text-secondary text-sm sm:text-[17px]">Six features. Zero bloat.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+    {features.map((f, i) => (
+      <div class="group bg-bg-elevated border border-border rounded-2xl sm:rounded-[20px] p-4 sm:p-5 lg:p-7 reveal transition-all ease-out hover:bg-[rgba(255,255,255,0.04)] hover:-translate-y-2 hover:scale-[1.02] hover:border-[rgba(255,255,255,0.12)] hover:shadow-[0_8px_40px_rgba(0,122,255,0.1)]"
+           style="transition-duration: 1200ms; transition-delay: ${i * 0.1}s">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl bg-accent-dim flex items-center justify-center mb-3 sm:mb-4 text-accent transition-all ease-out group-hover:scale-110 group-hover:bg-accent-dim group-hover:shadow-[0_0_20px_rgba(0,122,255,0.15)]"
+             style="transition-duration: 1200ms">
+          {f.icon === 'split' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>}
+          {f.icon === 'scale' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>}
+          {f.icon === 'clock' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>}
+          {f.icon === 'power' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>}
+          {f.icon === 'shield' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>}
+          {f.icon === 'device' && <svg class="w-[18px] h-[18px] sm:w-5 sm:h-5 lg:w-5.5 lg:h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>}
+        </div>
+        <h3 class="font-display text-sm sm:text-[15px] lg:text-[17px] font-semibold mb-1 sm:mb-2">{f.title}</h3>
+        <p class="text-text-secondary text-xs sm:text-[13px] lg:text-sm leading-relaxed font-medium tracking-tight">{f.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>

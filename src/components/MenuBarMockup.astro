@@ -1,178 +1,44 @@
-<div class="menubar-mockup">
-  <div class="menubar-inner">
-    <div class="menubar-left">
-      <span class="apple-logo">&#63743;</span>
-      <span class="menubar-time">9:41</span>
-    </div>
-    <div class="menubar-right">
-      <span class="wifi-icon">
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
-          <path d="M8 0C5.1 0 2.4 1.2 0.4 3.2L8 11.5L15.6 3.2C13.6 1.2 10.9 0 8 0ZM8 9.5L2.5 4C4.1 2.6 6 1.8 8 1.8C10 1.8 11.9 2.6 13.5 4L8 9.5Z"/>
-        </svg>
+---
+interface Props {
+  large?: boolean;
+  class?: string;
+}
+
+const { large, class: className } = Astro.props;
+---
+
+<div class={`inline-flex items-center gap-3
+    ${large
+      ? 'bg-[rgba(44,44,46,0.9)] backdrop-blur-xl rounded-[10px] px-5 py-2.5 border border-[rgba(255,255,255,0.1)] text-base shadow-[0_0_0_1px_rgba(0,0,0,0.2),0_8px_40px_rgba(0,0,0,0.5),0_0_100px_rgba(0,122,255,0.12)]'
+      : 'bg-[rgba(44,44,46,0.85)] backdrop-blur-xl rounded-lg px-4 py-[7px] border border-[rgba(255,255,255,0.08)] shadow-[0_0_0_1px_rgba(0,0,0,0.2),0_4px_24px_rgba(0,0,0,0.4),0_0_80px_rgba(0,122,255,0.1)] animate-float'
+    }
+    ${className || ''}`}>
+  <!-- Left: Apple logo + time -->
+  <div class="flex items-center gap-2.5">
+    <span class="text-sm opacity-85">&#63743;</span>
+    <span class="font-medium opacity-90 text-sm">9:41</span>
+  </div>
+
+  <!-- Separator -->
+  <div class="w-px h-4 bg-white/15"></div>
+
+  <!-- Right: Wi-Fi icon + speed -->
+  <div class="flex items-center gap-3">
+    <svg class="opacity-60" width="14" height="11" viewBox="0 0 16 12" fill="currentColor">
+      <path d="M8 0C5.1 0 2.4 1.2 0.4 3.2L8 11.5L15.6 3.2C13.6 1.2 10.9 0 8 0ZM8 9.5L2.5 4C4.1 2.6 6 1.8 8 1.8C10 1.8 11.9 2.6 13.5 4L8 9.5Z"/>
+    </svg>
+
+    <div class={`flex items-center ${large ? 'gap-[18px]' : 'gap-[14px]'} font-mono text-xs font-medium`}>
+      <span class="flex items-center gap-[3px]">
+        <span class="text-accent text-[10px]">↓</span>
+        <span class="tabular-nums min-w-[36px] text-right speed-anim-down">24.1</span>
+        <span class="opacity-50 text-[10px] ml-[1px]">MB/s</span>
       </span>
-      <span class="speed-readout">
-        <span class="speed-down">
-          <span class="arrow">↓</span>
-          <span class="speed-value down-value">24.1</span>
-          <span class="speed-unit">MB/s</span>
-        </span>
-        <span class="speed-up">
-          <span class="arrow">↑</span>
-          <span class="speed-value up-value">4.8</span>
-          <span class="speed-unit">MB/s</span>
-        </span>
+      <span class="flex items-center gap-[3px]">
+        <span class="text-success text-[10px]">↑</span>
+        <span class="tabular-nums min-w-[36px] text-right speed-anim-up">4.8</span>
+        <span class="opacity-50 text-[10px] ml-[1px]">MB/s</span>
       </span>
     </div>
   </div>
 </div>
-
-<style>
-  .menubar-mockup {
-    display: inline-flex;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 8px;
-    padding: 8px 16px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    margin: 32px 0;
-    min-width: 340px;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .menubar-mockup {
-      background: rgba(44, 44, 46, 0.85);
-      border-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    }
-  }
-  
-  .menubar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
-    font-size: 14px;
-    color: var(--text);
-  }
-  
-  .menubar-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .apple-logo {
-    font-size: 16px;
-    opacity: 0.9;
-  }
-  
-  .menubar-time {
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-  }
-  
-  .menubar-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .wifi-icon {
-    display: flex;
-    align-items: center;
-    opacity: 0.8;
-  }
-  
-  .speed-readout {
-    display: flex;
-    gap: 16px;
-    font-family: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  
-  .speed-down,
-  .speed-up {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-  }
-  
-  .arrow {
-    font-size: 11px;
-    opacity: 0.7;
-  }
-  
-  .speed-value {
-    font-variant-numeric: tabular-nums;
-    min-width: 36px;
-    text-align: right;
-  }
-  
-  .speed-unit {
-    font-size: 11px;
-    opacity: 0.6;
-    margin-left: 1px;
-  }
-  
-  /* Animated number changes */
-  .down-value::after {
-    content: '24.1';
-    animation: downNumbers 8s ease-in-out infinite;
-  }
-  
-  .up-value::after {
-    content: '4.8';
-    animation: upNumbers 8s ease-in-out infinite;
-  }
-  
-  .down-value {
-    font-size: 0;
-  }
-  
-  .up-value {
-    font-size: 0;
-  }
-  
-  @keyframes downNumbers {
-    0%, 100% { content: '24.1'; }
-    10% { content: '18.7'; }
-    20% { content: '31.2'; }
-    30% { content: '15.4'; }
-    40% { content: '42.8'; }
-    50% { content: '28.6'; }
-    60% { content: '12.3'; }
-    70% { content: '35.9'; }
-    80% { content: '19.5'; }
-    90% { content: '27.1'; }
-  }
-  
-  @keyframes upNumbers {
-    0%, 100% { content: '4.8'; }
-    15% { content: '2.1'; }
-    30% { content: '6.3'; }
-    45% { content: '1.7'; }
-    60% { content: '5.9'; }
-    75% { content: '3.4'; }
-    90% { content: '7.2'; }
-  }
-  
-  @media (max-width: 480px) {
-    .menubar-mockup {
-      min-width: auto;
-      padding: 6px 12px;
-    }
-    
-    .menubar-inner {
-      font-size: 12px;
-    }
-    
-    .speed-readout {
-      font-size: 11px;
-      gap: 10px;
-    }
-  }
-</style>

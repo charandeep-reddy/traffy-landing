@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
 ---
 
 <!DOCTYPE html>
@@ -7,33 +8,80 @@ import '../styles/global.css';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Traffy — Real-time network speed for your Mac</title>
-  <meta name="description" content="See live upload and download speeds in your macOS menu bar. Lightweight, native, and free.">
-  <meta property="og:title" content="Traffy — Real-time network speed for your Mac">
-  <meta property="og:description" content="See live upload and download speeds in your macOS menu bar. Lightweight, native, and free.">
+  <title>Traffy — Network speed in your menu bar</title>
+  <meta name="description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free &amp; open source.">
+  <meta property="og:title" content="Traffy — Network speed in your menu bar">
+  <meta property="og:description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free &amp; open source.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://traffy.psydevx.app">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Fixed Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 h-12 flex items-center justify-center
+              backdrop-blur-xl bg-bg/60 border-b border-border"
+       style="background: rgba(10,10,15,0.6);">
+    <div class="max-w-[980px] w-full flex items-center justify-between px-6">
+      <a href="#" class="flex items-center gap-2 font-semibold text-sm text-text no-underline">
+        <svg viewBox="0 0 100 100" class="w-5 h-5" fill="none">
+          <rect x="5" y="5" width="90" height="90" rx="22" fill="#007AFF"/>
+          <path d="M50 20 L50 70 M36 35 L50 20 L64 35" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30 55 L50 75 L70 55" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+        Traffy
+      </a>
+      <div class="flex items-center gap-3 sm:gap-6">
+        <div class="max-sm:hidden flex items-center gap-6">
+          <a href="#problem" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Problem</a>
+          <a href="#features" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Features</a>
+          <a href="#tech" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Tech</a>
+        </div>
+        <a href={DOWNLOAD_URL}
+           class="bg-accent text-white px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold no-underline hover:opacity-85 transition-opacity">
+          Download
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <slot />
-  
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Traffy",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "macOS",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
+
+  <!-- Footer -->
+  <footer class="border-t border-border py-6 px-6">
+    <div class="max-w-[980px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-6">
+        <a href={REPO_URL} class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">GitHub</a>
+        <a href={LICENSE_URL} class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">MIT License</a>
+        <a href="https://psydevx.app" class="text-text-muted text-xs no-underline hover:text-text-secondary transition-colors">psydevx.app</a>
+      </div>
+      <span class="text-text-muted text-xs">&copy; 2026 Traffy. Free forever.</span>
+    </div>
+  </footer>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Traffy",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "macOS",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  })}></script>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

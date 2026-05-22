@@ -1,0 +1,28 @@
+---
+const specs = [
+  { key: 'Language', value: 'Pure Swift 6' },
+  { key: 'Size', value: '< 2 MB' },
+  { key: 'macOS', value: '13+ (Ventura)' },
+  { key: 'Architecture', value: 'Apple Silicon + Intel' },
+  { key: 'Network', value: 'None. Zero calls.' },
+  { key: 'Source', value: 'Open Source (MIT)' },
+];
+---
+
+<section class="py-[100px] px-6 border-t border-border border-b reveal"
+         style="background: radial-gradient(ellipse at center, rgba(255,255,255,0.01) 0%, transparent 60%);" id="tech">
+  <div class="max-w-[900px] mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-[clamp(28px,3.5vw,40px)] font-bold tracking-[-0.03em] mb-3">Built different.</h2>
+      <p class="text-text-secondary text-[17px]">No Electron. No JavaScript. Just pure Swift and system calls.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      {specs.map(spec => (
+        <div class="bg-bg-elevated border border-border rounded-[14px] p-5">
+          <div class="text-text-muted text-xs uppercase tracking-[0.06em] font-semibold mb-1.5">{spec.key}</div>
+          <div class="font-mono text-sm font-medium">{spec.value}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
