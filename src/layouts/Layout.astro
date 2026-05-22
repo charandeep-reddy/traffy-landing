@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffy — Real-time network speed for your Mac</title>
+  <meta name="description" content="See live upload and download speeds in your macOS menu bar. Lightweight, native, and free.">
+  <meta property="og:title" content="Traffy — Real-time network speed for your Mac">
+  <meta property="og:description" content="See live upload and download speeds in your macOS menu bar. Lightweight, native, and free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://traffy.psydevx.app">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <slot />
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Traffy",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "macOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
+</body>
+</html>
