@@ -35,9 +35,15 @@ import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
     <div class="max-w-[980px] w-full flex items-center justify-between px-6">
       <a href="#" class="flex items-center gap-2 font-semibold text-sm text-text no-underline">
         <svg viewBox="0 0 100 100" class="w-5 h-5" fill="none">
-          <rect x="5" y="5" width="90" height="90" rx="22" fill="#007AFF"/>
-          <path d="M50 20 L50 70 M36 35 L50 20 L64 35" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M30 55 L50 75 L70 55" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          <defs>
+            <linearGradient id="navIcon" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#007AFF"/>
+              <stop offset="100%" stop-color="#00d4ff"/>
+            </linearGradient>
+          </defs>
+          <rect x="5" y="5" width="90" height="90" rx="22" fill="url(#navIcon)"/>
+          <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
         </svg>
         Traffy
       </a>
