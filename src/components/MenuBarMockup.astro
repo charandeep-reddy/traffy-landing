@@ -1,108 +1,96 @@
 ---
 interface Props {
-  large?: boolean;
+  className?: string;
 }
 
-const { large } = Astro.props;
+const { className } = Astro.props;
 ---
 
-<div class:list={["mockup", large && "mockup-lg"]}>
-  <div class="mockup-body">
-    <span class="slot down">
-      <span class="arr">↓</span>
-      <span class="num" id="down-val">24.1</span>
-      <span class="suf">MB/s</span>
-    </span>
-    <span class="slot up">
-      <span class="arr">↑</span>
-      <span class="num" id="up-val">4.8</span>
-      <span class="suf">MB/s</span>
-    </span>
+<div class:list={["macos-menu-bar", className]}>
+  <!-- Left: Apple Menu -->
+  <div class="flex items-center gap-3">
+    <span class="font-sans font-black text-text/90 text-sm hover:opacity-70 cursor-default"></span>
+    <span class="font-sans font-bold text-text/90 text-xs hover:opacity-70 cursor-default">Finder</span>
+    <span class="max-sm:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">File</span>
+    <span class="max-sm:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">Edit</span>
+    <span class="max-sm:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">View</span>
+    <span class="max-sm:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">Go</span>
+    <span class="max-lg:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">Window</span>
+    <span class="max-lg:hidden font-sans font-medium text-text/60 text-xs hover:text-text/90 cursor-default transition-colors">Help</span>
+  </div>
+
+  <!-- Right: Traffy & Control Center & Clock -->
+  <div class="flex items-center gap-3 sm:gap-4">
+    <!-- Traffy Live Network Widget -->
+    <div class="flex items-center gap-3 font-mono text-[11px] bg-text/5 px-2 py-0.5 rounded border border-text/10 select-none">
+      <span class="flex items-center gap-1">
+        <span class="text-text/40 text-[9px]">↓</span>
+        <span class="font-bold text-text/95 tabular-nums speed-down-val">24.1</span>
+        <span class="text-[8px] text-text/40 font-sans">MB/s</span>
+      </span>
+      <span class="flex items-center gap-1">
+        <span class="text-text/40 text-[9px]">↑</span>
+        <span class="font-bold text-text/95 tabular-nums speed-up-val">4.8</span>
+        <span class="text-[8px] text-text/40 font-sans">MB/s</span>
+      </span>
+    </div>
+
+    <!-- System Status Icons -->
+    <div class="flex items-center gap-2.5 opacity-65 text-text">
+      <!-- Wi-Fi -->
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+        <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+      </svg>
+      <!-- Battery -->
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect>
+        <line x1="22" y1="11" x2="22" y2="13"></line>
+      </svg>
+      <!-- Control Center -->
+      <svg class="w-3.5 h-3.5 max-sm:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </div>
+
+    <!-- Clock -->
+    <span class="font-sans font-medium text-text/80 text-[11px] select-none hover:opacity-80 cursor-default">Mon 9:41 AM</span>
   </div>
 </div>
 
 <script>
-  const downEl = document.getElementById('down-val');
-  const upEl = document.getElementById('up-val');
-
   function rand(min: number, max: number) {
     return (Math.random() * (max - min) + min).toFixed(1);
   }
 
   function tick() {
-    downEl.textContent = rand(12, 45);
-    upEl.textContent = rand(1.5, 8);
+    document.querySelectorAll('.speed-down-val').forEach(el => {
+      el.textContent = rand(15, 38);
+    });
+    document.querySelectorAll('.speed-up-val').forEach(el => {
+      el.textContent = rand(1.2, 6.4);
+    });
   }
 
-  setInterval(tick, 1800);
+  setInterval(tick, 2000);
   tick();
 </script>
 
 <style>
-  .mockup {
-    display: inline-flex;
-    align-items: center;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    border-radius: 16px;
-    padding: 12px 22px;
-  }
-
-  .mockup-lg {
-    padding: 16px 28px;
-    border-radius: 20px;
-    box-shadow: 0 0 60px rgba(0, 122, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .mockup-body {
+  .macos-menu-bar {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 20px;
-  }
-
-  .mockup-lg .mockup-body {
-    gap: 26px;
-  }
-
-  .slot {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: 'JetBrains Mono', 'SF Mono', SFMono-Regular, ui-monospace, monospace;
-  }
-
-  .arr {
-    font-size: 11px;
-    opacity: 0.5;
-  }
-
-  .mockup-lg .arr {
-    font-size: 13px;
-  }
-
-  .num {
-    font-variant-numeric: tabular-nums;
-    min-width: 42px;
-    text-align: right;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text);
-  }
-
-  .mockup-lg .num {
-    font-size: 18px;
-    min-width: 50px;
-  }
-
-  .suf {
-    font-size: 10px;
-    opacity: 0.4;
-    margin-left: 1px;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
-  }
-
-  .mockup-lg .suf {
-    font-size: 12px;
+    justify-content: space-between;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px 12px 0 0;
   }
 </style>

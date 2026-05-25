@@ -2,22 +2,27 @@
 import MenuBarMockup from './MenuBarMockup.astro';
 ---
 
-<section class="text-center px-6 py-[100px] pb-20 reveal"
-         style="background: radial-gradient(ellipse at center, rgba(0,122,255,0.04) 0%, transparent 60%);">
-  <div class="w-[120px] h-[120px] mx-auto mb-8 rounded-[28px] flex items-center justify-center glow-accent-lg"
-       style="background: linear-gradient(135deg, #007AFF, #00d4ff);">
-    <svg viewBox="0 0 100 100" class="w-14 h-14" fill="none">
-      <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<section class="text-center px-6 py-20 sm:py-28 reveal"
+         style="background: radial-gradient(circle at center, rgba(0,122,255,0.02) 0%, transparent 70%);">
+  <div class="w-24 h-24 mx-auto mb-8 rounded-[22px] flex items-center justify-center bg-accent text-white shadow-sm hover:scale-102 transition-transform duration-200">
+    <svg viewBox="0 0 100 100" class="w-12 h-12" fill="none">
+      <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
     </svg>
   </div>
 
-  <h2 class="font-display text-[clamp(40px,10vw,80px)] font-extrabold tracking-[-0.06em] text-gradient mb-6">
+  <h2 class="font-display text-[clamp(32px,8vw,56px)] font-bold tracking-tight text-text mb-6">
     Traffy
   </h2>
-  <MenuBarMockup />
-  <p class="text-[18px] text-text-secondary max-w-[500px] mx-auto mt-12">
+  
+  <div class="max-w-[540px] mx-auto bg-bg-card border border-border rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.05)] overflow-hidden">
+    <MenuBarMockup />
+    <div class="h-10 bg-bg-elevated/40 flex items-center justify-center text-[10px] text-text-secondary select-none border-t border-border/40 font-mono">
+      Native Swift Menu Bar Widget
+    </div>
+  </div>
+  
+  <p class="text-sm sm:text-base text-text-secondary max-w-[480px] mx-auto mt-10 font-medium">
     Live upload and download speeds. Always visible. Always real.
   </p>
-
 </section>

@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  --font-display: 'Georgia', 'Baskerville', 'New York', serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', SFMono-Regular, ui-monospace, monospace;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
 
-  --color-bg: #0a0a0f;
-  --color-bg-elevated: #12121a;
-  --color-bg-card: rgba(255, 255, 255, 0.03);
-  --color-text: #f0f0f5;
-  --color-text-secondary: #8a8a9a;
-  --color-text-muted: #5a5a6a;
+  --color-bg: #fafaf9;
+  --color-bg-elevated: #f4f4f6;
+  --color-bg-card: #ffffff;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #515154;
+  --color-text-muted: #86868b;
   --color-accent: #007aff;
-  --color-accent-dim: rgba(0, 122, 255, 0.12);
-  --color-accent-glow: rgba(0, 122, 255, 0.35);
+  --color-accent-dim: rgba(0, 122, 255, 0.08);
+  --color-accent-glow: rgba(0, 122, 255, 0.12);
   --color-danger: #ff3b30;
   --color-success: #34c759;
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border: #e5e5ea;
 }
 
 @layer base {
@@ -43,34 +43,34 @@
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #f0f0f5 0%, #007aff 100%);
+    background: linear-gradient(135deg, #1d1d1f 30%, #007aff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--color-border);
   }
 
   .glow-accent {
-    box-shadow: 0 0 30px rgba(0, 122, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15), 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .glow-accent-lg {
-    box-shadow: 0 0 60px rgba(0, 122, 255, 0.25);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
   }
 }
 
 /* Scroll reveal animation */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22, 0.03, 0.26, 1),
-              transform 0.8s cubic-bezier(0.22, 0.03, 0.26, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible {
   opacity: 1;

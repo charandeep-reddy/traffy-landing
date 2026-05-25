@@ -1,45 +1,97 @@
 ---
 import { DOWNLOAD_URL, REPO_URL } from '../constants';
+import MenuBarMockup from './MenuBarMockup.astro';
 ---
 
-<section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
-  <div class="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] pointer-events-none"
-       style="background: radial-gradient(ellipse at center, rgba(0,122,255,0.08) 0%, transparent 60%);">
-  </div>
-  <div class="absolute inset-0 pointer-events-none"
-       style="background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-              background-size: 60px 60px;
-              mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
-              -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);">
+<section class="pt-32 pb-20 flex flex-col items-center justify-center text-center px-6 relative overflow-hidden bg-bg">
+  <!-- Subtle warm background gradients -->
+  <div class="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] pointer-events-none opacity-40"
+       style="background: radial-gradient(ellipse at center, rgba(88,86,214,0.06) 0%, transparent 70%);">
   </div>
 
-  <h1 class="font-display text-[clamp(48px,10vw,96px)] font-bold tracking-[-0.04em] leading-[1.05] mb-5 reveal">
-    Your network speed.<br>
-    <span class="text-gradient">Always visible.</span>
-  </h1>
+  <div class="max-w-[780px] mx-auto flex flex-col items-center z-10">
+    <h1 class="font-display text-[clamp(36px,6vw,68px)] font-bold tracking-tight text-text leading-[1.1] mb-6 reveal">
+      Your network speed.<br>
+      <span class="text-gradient font-serif italic">Always visible.</span>
+    </h1>
 
-  <p class="text-text-secondary text-[clamp(16px,2vw,21px)] max-w-[520px] leading-relaxed mb-12 reveal reveal-delay-1">
-    Real-time upload and download speeds in your macOS menu bar.
-    No apps to open. No dashboards to check.
-  </p>
+    <p class="text-text-secondary text-[clamp(16px,1.8vw,19px)] font-medium max-w-[560px] leading-relaxed mb-10 reveal reveal-delay-1">
+      Real-time upload and download speeds embedded directly in your macOS menu bar. 
+      No heavy dashboards. Pure, native Swift.
+    </p>
 
-  <div class="flex flex-wrap gap-3 justify-center reveal reveal-delay-2">
-    <a href={DOWNLOAD_URL}
-       class="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-white rounded-full font-semibold text-sm no-underline
-              transition-all duration-300 hover:scale-105 glow-accent">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-      </svg>
-      Download for macOS
-    </a>
-    <a href={REPO_URL}
-       class="inline-flex items-center gap-2 px-8 py-3.5 bg-bg-card text-text rounded-full font-medium text-sm no-underline
-              border border-border transition-all duration-300 hover:bg-white/5 hover:border-white/15">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-      </svg>
-      View on GitHub
-    </a>
+    <!-- CTAs -->
+    <div class="flex flex-wrap gap-4 justify-center mb-16 reveal reveal-delay-2">
+      <a href={DOWNLOAD_URL}
+         class="inline-flex items-center gap-2 px-7 py-3 bg-accent text-white rounded-full font-bold text-[13px] no-underline
+                transition-all duration-200 hover:bg-accent/90 shadow-sm hover:shadow-md active:scale-98">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        Download for macOS
+      </a>
+      <a href={REPO_URL}
+         class="inline-flex items-center gap-2 px-7 py-3 bg-bg-card text-text rounded-full font-bold text-[13px] no-underline
+                border border-border transition-all duration-200 hover:bg-bg-elevated hover:border-border/120 active:scale-98">
+        <svg class="w-4 h-4 opacity-75" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- macOS Desktop Mockup Frame -->
+    <div class="w-full max-w-[760px] bg-bg-card border border-border/80 rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.03)] overflow-hidden reveal reveal-delay-3">
+      <!-- Menu bar -->
+      <MenuBarMockup />
+      
+      <!-- Desktop wallpaper area -->
+      <div class="w-full h-[220px] sm:h-[320px] p-6 sm:p-10 flex items-center justify-center relative overflow-hidden select-none"
+           style="background: radial-gradient(circle at 10% 20%, #fef08a 0%, transparent 40%), radial-gradient(circle at 80% 30%, #e0e7ff 0%, transparent 50%), radial-gradient(circle at 50% 80%, #fae8ff 0%, transparent 45%), #fafaf9;">
+        
+        <!-- Subtle shadow blur across wallpaper -->
+        <div class="absolute inset-0 bg-white/[0.08] pointer-events-none"></div>
+
+        <!-- macOS Preferences Window Mockup -->
+        <div class="w-[280px] sm:w-[320px] rounded-lg bg-white/95 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.08),0_0_1px_rgba(0,0,0,0.2)] border border-black/10 text-left font-sans flex flex-col p-4 animate-fade-in relative z-10">
+          <!-- Title bar -->
+          <div class="flex items-center justify-between pb-3 border-b border-black/5 mb-3.5">
+            <!-- Window Control dots -->
+            <div class="flex gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56] border border-[#e0443e]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] border border-[#dea123]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f] border border-[#1aab29]"></span>
+            </div>
+            <!-- Title -->
+            <span class="text-[10px] font-bold text-text/80 tracking-wide">Traffy Preferences</span>
+            <div class="w-10"></div>
+          </div>
+
+          <!-- Preferences Body -->
+          <div class="space-y-2.5 text-[11px] text-text/90">
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Launch at login</span>
+              <input type="checkbox" checked disabled class="accent-accent scale-95" />
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Show download speed</span>
+              <input type="checkbox" checked disabled class="accent-accent scale-95" />
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Show upload speed</span>
+              <input type="checkbox" checked disabled class="accent-accent scale-95" />
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Refresh rate</span>
+              <span class="bg-black/5 px-2 py-0.5 rounded text-[10px] font-semibold text-text-secondary border border-black/5">1 second</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Display unit</span>
+              <span class="bg-black/5 px-2 py-0.5 rounded text-[10px] font-semibold text-text-secondary border border-black/5">Bytes / sec</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

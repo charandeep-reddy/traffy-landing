@@ -9,18 +9,17 @@ const specs = [
 ];
 ---
 
-<section class="py-[100px] px-6 border-t border-border border-b reveal"
-         style="background: radial-gradient(ellipse at center, rgba(255,255,255,0.01) 0%, transparent 60%);" id="tech">
-  <div class="max-w-[900px] mx-auto">
+<section class="py-20 sm:py-28 px-6 border-t border-b border-border bg-bg-elevated/30 reveal" id="tech">
+  <div class="max-w-[780px] mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-display text-[clamp(28px,3.5vw,40px)] font-bold tracking-[-0.03em] mb-3">Built different.</h2>
-      <p class="text-text-secondary text-[17px]">No Electron. No JavaScript. Just pure Swift and system calls.</p>
+      <h2 class="font-display text-[clamp(26px,3.5vw,40px)] font-bold tracking-tight mb-3">Built different.</h2>
+      <p class="text-text-secondary text-sm sm:text-base font-medium">No Electron. No JavaScript. Just native system APIs.</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {specs.map(spec => (
-        <div class="bg-bg-elevated border border-border rounded-[14px] p-5">
-          <div class="text-text-muted text-xs uppercase tracking-[0.06em] font-semibold mb-1.5">{spec.key}</div>
-          <div class="font-mono text-sm font-medium">{spec.value}</div>
+        <div class="bg-bg-card border border-border rounded-xl p-5 shadow-xs">
+          <div class="text-text-muted text-[10px] uppercase tracking-wider font-bold mb-2">{spec.key}</div>
+          <div class="font-mono text-[12px] font-bold text-text bg-text/5 px-2 py-0.5 rounded w-fit border border-text/10">{spec.value}</div>
         </div>
       ))}
     </div>

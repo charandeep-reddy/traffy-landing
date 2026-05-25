@@ -28,50 +28,46 @@ import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
 </head>
 <body>
 
-  <!-- Fixed Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 h-12 flex items-center justify-center
-              backdrop-blur-xl bg-bg/60 border-b border-border"
-       style="background: rgba(10,10,15,0.6);">
-    <div class="max-w-[980px] w-full flex items-center justify-between px-6">
-      <a href="#" class="flex items-center gap-2 font-semibold text-sm text-text no-underline">
-        <svg viewBox="0 0 100 100" class="w-5 h-5" fill="none">
+  <!-- Floating Pill-header Nav -->
+  <header class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <nav class="glass max-w-[580px] w-full h-11 px-4 rounded-full flex items-center justify-between shadow-[0_4px_16px_rgba(0,0,0,0.04)] border border-border">
+      <a href="#" class="flex items-center gap-2 text-xs font-bold text-text no-underline">
+        <svg viewBox="0 0 100 100" class="w-4 h-4" fill="none">
           <defs>
             <linearGradient id="navIcon" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#007AFF"/>
-              <stop offset="100%" stop-color="#00d4ff"/>
+              <stop offset="100%" stop-color="#5856d6"/>
             </linearGradient>
           </defs>
           <rect x="5" y="5" width="90" height="90" rx="22" fill="url(#navIcon)"/>
-          <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
         </svg>
-        Traffy
+        <span class="tracking-tight">Traffy</span>
       </a>
-      <div class="flex items-center gap-3 sm:gap-6">
-        <div class="max-sm:hidden flex items-center gap-6">
-          <a href="#problem" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Problem</a>
-          <a href="#features" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Features</a>
-          <a href="#tech" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Tech</a>
-        </div>
+      <div class="flex items-center gap-4">
+        <a href="#problem" class="text-text-secondary text-[11px] font-medium no-underline hover:text-text transition-colors">Problem</a>
+        <a href="#features" class="text-text-secondary text-[11px] font-medium no-underline hover:text-text transition-colors">Features</a>
+        <a href="#tech" class="text-text-secondary text-[11px] font-medium no-underline hover:text-text transition-colors">Specs</a>
         <a href={DOWNLOAD_URL}
-           class="bg-accent text-white px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold no-underline hover:opacity-85 transition-opacity">
+           class="bg-accent text-white px-3 py-1 rounded-full text-[10px] font-bold no-underline hover:bg-accent/90 transition-colors shadow-sm">
           Download
         </a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <slot />
 
   <!-- Footer -->
-  <footer class="border-t border-border py-12 px-6">
-    <div class="max-w-[980px] mx-auto flex flex-col items-center gap-4 text-center">
+  <footer class="border-t border-border py-12 px-6 bg-bg-elevated/40">
+    <div class="max-w-[640px] mx-auto flex flex-col items-center gap-4 text-center">
       <div class="flex items-center gap-5 text-xs text-text-muted">
         <a href={REPO_URL} class="no-underline hover:text-text transition-colors">GitHub</a>
         <a href={LICENSE_URL} class="no-underline hover:text-text transition-colors">MIT License</a>
         <a href="https://psydevx.app" class="no-underline hover:text-accent transition-colors font-medium">Made by psydevx</a>
       </div>
-      <p class="text-[11px] text-text-muted">&copy; 2026 Traffy</p>
+      <p class="text-[11px] text-text-muted">&copy; 2026 Traffy. Handcrafted for macOS.</p>
     </div>
   </footer>
 
