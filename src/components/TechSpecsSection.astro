@@ -1,28 +1,34 @@
 ---
 const specs = [
-  { key: 'Language', value: 'Pure Swift 6' },
-  { key: 'Size', value: '< 2 MB' },
-  { key: 'macOS', value: '13+ (Ventura)' },
   { key: 'Architecture', value: 'Apple Silicon + Intel' },
-  { key: 'Network', value: 'None. Zero calls.' },
-  { key: 'Source', value: 'Open Source (MIT)' },
+  { key: 'Bundle Size', value: 'Under 2.0 megabytes' },
+  { key: 'Language', value: 'Swift 6 & SwiftUI' },
+  { key: 'macOS Version', value: '13.0+ (Ventura, Sonoma, Sequoia)' },
+  { key: 'Privacy', value: 'No internet calls. Zero logs.' },
+  { key: 'Licensing', value: 'Open Source (MIT License)' },
 ];
 ---
 
-<section class="py-[100px] px-6 border-t border-border border-b reveal"
-         style="background: radial-gradient(ellipse at center, rgba(255,255,255,0.01) 0%, transparent 60%);" id="tech">
-  <div class="max-w-[900px] mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="font-display text-[clamp(28px,3.5vw,40px)] font-bold tracking-[-0.03em] mb-3">Built different.</h2>
-      <p class="text-text-secondary text-[17px]">No Electron. No JavaScript. Just pure Swift and system calls.</p>
+<section class="py-24 sm:py-32 px-6 border-t border-white/5 reveal"
+         style="background: radial-gradient(ellipse at center, rgba(88,86,214,0.01) 0%, transparent 60%);" id="tech">
+  <div class="max-w-[800px] mx-auto">
+    
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/15 text-accent text-[10px] font-bold uppercase tracking-wider mb-4">
+        Engineering specs
+      </div>
+      <h2 class="font-display text-[clamp(28px,3.5vw,40px)] font-bold tracking-[-0.03em] mb-4">Built different.</h2>
+      <p class="text-text-secondary text-[15px] sm:text-base max-w-[500px] mx-auto">No heavy Electron shell. No local JavaScript runtime. Just native Swift calculations.</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {specs.map(spec => (
-        <div class="bg-bg-elevated border border-border rounded-[14px] p-5">
-          <div class="text-text-muted text-xs uppercase tracking-[0.06em] font-semibold mb-1.5">{spec.key}</div>
-          <div class="font-mono text-sm font-medium">{spec.value}</div>
+        <div class="bg-[#09090b]/40 border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-colors shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+          <div class="text-text-muted text-[10px] uppercase tracking-[0.08em] font-bold mb-2 font-mono">{spec.key}</div>
+          <div class="font-mono text-xs font-semibold text-text tracking-wide">{spec.value}</div>
         </div>
       ))}
     </div>
+
   </div>
 </section>

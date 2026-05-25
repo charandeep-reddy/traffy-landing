@@ -1,0 +1,156 @@
+---
+// BlueprintSection.astro
+---
+
+<section class="max-w-[1000px] mx-auto px-6 py-24 sm:py-32 border-t border-white/5" id="blueprint">
+  <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+    
+    <!-- Code Window Mockup -->
+    <div class="reveal relative group">
+      <!-- Glow under window -->
+      <div class="absolute inset-0 rounded-2xl bg-accent/5 blur-3xl pointer-events-none group-hover:bg-accent/8 transition-colors"></div>
+      
+      <!-- Native Code Box Container -->
+      <div class="relative bg-[#07070a] border border-white/5 rounded-2xl shadow-[0_24px_50px_rgba(0,0,0,0.5)] overflow-hidden">
+        <!-- Editor Header (Tabs) -->
+        <div class="flex items-center justify-between px-3 bg-[#0d0d12] border-b border-white/5 select-none">
+          <div class="flex items-center gap-1">
+            <!-- File Tab 1 (Active) -->
+            <button 
+              id="tab-monitor" 
+              class="flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-white bg-[#07070a] border-r border-white/5 cursor-pointer focus:outline-none transition-colors"
+            >
+              <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
+              NetworkMonitor.swift
+            </button>
+            <!-- File Tab 2 (Inactive) -->
+            <button 
+              id="tab-formatter" 
+              class="flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-text-muted hover:text-text-secondary cursor-pointer focus:outline-none transition-colors"
+            >
+              <div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+              SpeedFormatter.swift
+            </button>
+          </div>
+          <!-- Window controls -->
+          <div class="flex items-center gap-1.5 px-3 max-sm:hidden">
+            <div class="w-2.5 h-2.5 rounded-full bg-danger/80"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-warning/80"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-success/80"></div>
+          </div>
+        </div>
+        
+        <!-- Code Content Panel -->
+        <div class="p-5 font-mono text-[11px] sm:text-xs leading-relaxed text-text-secondary overflow-x-auto select-none min-h-[260px]">
+          
+          <!-- Code Block 1: NetworkMonitor (Visible by default) -->
+          <div id="code-monitor" class="block">
+            <pre class="m-0"><span class="text-accent">import</span> Foundation
+
+<span class="text-text-muted">// Hook into core system POSIX sockets</span>
+<span class="text-accent">func</span> <span class="text-text font-medium">fetchInterfaceBytes</span>() -&gt; (upload: <span class="text-success">UInt64</span>, download: <span class="text-success">UInt64</span>) &#123;
+    <span class="text-accent">var</span> upload: <span class="text-success">UInt64</span> = 0
+    <span class="text-accent">var</span> download: <span class="text-success">UInt64</span> = 0
+    <span class="text-accent">var</span> ifaddr: <span class="text-success">UnsafeMutablePointer</span>&lt;ifaddrs&gt;?
+    
+    <span class="text-accent">if</span> <span class="text-text font-medium">getifaddrs</span>(&amp;ifaddr) == 0 &#123;
+        <span class="text-accent">var</span> ptr = ifaddr
+        <span class="text-accent">while</span> ptr != <span class="text-accent">nil</span> &#123;
+            <span class="text-accent">defer</span> &#123; ptr = ptr?.pointee.ifa_next &#125;
+            <span class="text-text-muted">// Filter and calculate active interface deltas...</span>
+        }
+        <span class="text-text font-medium">freeifaddrs</span>(ifaddr)
+    &#125;
+    <span class="text-accent">return</span> (upload, download)
+&#125;</pre>
+          </div>
+
+          <!-- Code Block 2: SpeedFormatter (Hidden by default) -->
+          <div id="code-formatter" class="hidden">
+            <pre class="m-0"><span class="text-accent">import</span> Foundation
+
+<span class="text-text-muted">// Formats raw bytes delta to human strings</span>
+<span class="text-accent">func</span> <span class="text-text font-medium">formatSpeed</span>(<span class="text-accent">_</span> bytes: <span class="text-success">UInt64</span>, mode: <span class="text-success">UnitMode</span>) -&gt; <span class="text-success">String</span> &#123;
+    <span class="text-accent">let</span> limit: <span class="text-success">Double</span> = mode == .bytes ? 1024 : 1000
+    <span class="text-accent">let</span> value = <span class="text-success">Double</span>(bytes) * (mode == .bytes ? 1 : 8)
+    
+    <span class="text-accent">if</span> value &lt; limit &#123;
+        <span class="text-accent">return</span> <span class="text-success">String</span>(format: <span class="text-warning">"%.0f %@"</span>, value, mode == .bytes ? <span class="text-warning">"B/s"</span> : <span class="text-warning">"b/s"</span>)
+    &#125; <span class="text-accent">else</span> <span class="text-accent">if</span> value &lt; limit * limit &#123;
+        <span class="text-accent">return</span> <span class="text-success">String</span>(format: <span class="text-warning">"%.1f %@"</span>, value / limit, mode == .bytes ? <span class="text-warning">"KB/s"</span> : <span class="text-warning">"Kbps"</span>)
+    &#125; <span class="text-accent">else</span> &#123;
+        <span class="text-accent">return</span> <span class="text-success">String</span>(format: <span class="text-warning">"%.1f %@"</span>, value / (limit * limit), mode == .bytes ? <span class="text-warning">"MB/s"</span> : <span class="text-warning">"Mbps"</span>)
+    &#125;
+&#125;</pre>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div class="reveal reveal-delay-1">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/15 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
+        Under the hood
+      </div>
+      <h2 class="font-display text-[clamp(28px,3.8vw,48px)] font-bold tracking-[-0.03em] mb-6">
+        No background bloat. Just system APIs.
+      </h2>
+      <p class="text-text-secondary text-[15px] leading-relaxed mb-6">
+        Most speed meters bundle large dependencies, background processes, or even complex local web servers to track simple numbers. 
+      </p>
+      <p class="text-text-secondary text-[15px] leading-relaxed">
+        Traffy calls native kernel socket functions (`getifaddrs()`) directly inside Swift. It has **zero third-party libraries**, does not perform background polling loops when idle, and keeps CPU impact at absolute zero.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const tabMonitor = document.getElementById('tab-monitor');
+  const tabFormatter = document.getElementById('tab-formatter');
+  const codeMonitor = document.getElementById('code-monitor');
+  const codeFormatter = document.getElementById('code-formatter');
+
+  function showMonitor() {
+    if (!tabMonitor || !tabFormatter || !codeMonitor || !codeFormatter) return;
+    
+    // Swap active code blocks
+    codeMonitor.classList.remove('hidden');
+    codeMonitor.classList.add('block');
+    codeFormatter.classList.remove('block');
+    codeFormatter.classList.add('hidden');
+
+    // Swap tab colors
+    tabMonitor.className = "flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-white bg-[#07070a] border-r border-white/5 cursor-pointer focus:outline-none transition-colors";
+    tabFormatter.className = "flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-text-muted hover:text-text-secondary cursor-pointer focus:outline-none transition-colors";
+    
+    // Swap active lights
+    tabMonitor.querySelector('.rounded-full').className = "w-1.5 h-1.5 rounded-full bg-accent";
+    tabFormatter.querySelector('.rounded-full').className = "w-1.5 h-1.5 rounded-full bg-white/20";
+  }
+
+  function showFormatter() {
+    if (!tabMonitor || !tabFormatter || !codeMonitor || !codeFormatter) return;
+    
+    // Swap active code blocks
+    codeMonitor.classList.remove('block');
+    codeMonitor.classList.add('hidden');
+    codeFormatter.classList.remove('hidden');
+    codeFormatter.classList.add('block');
+
+    // Swap tab colors
+    tabMonitor.className = "flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-text-muted hover:text-text-secondary cursor-pointer focus:outline-none transition-colors border-r border-white/5";
+    tabFormatter.className = "flex items-center gap-2 px-4 py-3 text-[10px] sm:text-xs font-mono font-semibold text-white bg-[#07070a] cursor-pointer focus:outline-none transition-colors";
+    
+    // Swap active lights
+    tabMonitor.querySelector('.rounded-full').className = "w-1.5 h-1.5 rounded-full bg-white/20";
+    tabFormatter.querySelector('.rounded-full').className = "w-1.5 h-1.5 rounded-full bg-accent";
+  }
+
+  if (tabMonitor && tabFormatter) {
+    tabMonitor.addEventListener('click', showMonitor);
+    tabFormatter.addEventListener('click', showFormatter);
+  }
+</script>

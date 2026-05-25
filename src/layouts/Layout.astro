@@ -9,69 +9,68 @@ import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traffy — Network speed in your menu bar</title>
-  <meta name="description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free &amp; open source.">
+  <meta name="description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free & open source.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://traffy.psydevx.app">
   <meta property="og:title" content="Traffy — Network speed in your menu bar">
-  <meta property="og:description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free &amp; open source.">
+  <meta property="og:description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free & open source.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://traffy.psydevx.app">
   <meta property="og:site_name" content="Traffy">
   <meta property="og:image" content="https://traffy.psydevx.app/favicon.svg">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Traffy — Network speed in your menu bar">
-  <meta name="twitter:description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free &amp; open source.">
+  <meta name="twitter:description" content="Real-time upload and download speeds in your macOS menu bar. Lightweight, native Swift. Free & open source.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-bg text-text selection:bg-accent-dim selection:text-accent">
 
-  <!-- Fixed Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 h-12 flex items-center justify-center
-              backdrop-blur-xl bg-bg/60 border-b border-border"
-       style="background: rgba(10,10,15,0.6);">
-    <div class="max-w-[980px] w-full flex items-center justify-between px-6">
-      <a href="#" class="flex items-center gap-2 font-semibold text-sm text-text no-underline">
-        <svg viewBox="0 0 100 100" class="w-5 h-5" fill="none">
+  <!-- Floating Glass Navbar -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4">
+    <nav class="max-w-[760px] mx-auto h-12 flex items-center justify-between px-5 rounded-full border border-white/5 bg-bg-elevated/70 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.5)]">
+      <a href="#" class="flex items-center gap-2.5 font-semibold text-[13px] tracking-tight text-text no-underline transition-opacity hover:opacity-90">
+        <svg viewBox="0 0 100 100" class="w-5.5 h-5.5" fill="none">
           <defs>
             <linearGradient id="navIcon" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#007AFF"/>
-              <stop offset="100%" stop-color="#00d4ff"/>
+              <stop offset="0%" stop-color="#5856D6"/>
+              <stop offset="100%" stop-color="#AF52DE"/>
             </linearGradient>
           </defs>
           <rect x="5" y="5" width="90" height="90" rx="22" fill="url(#navIcon)"/>
-          <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          <path d="M50 22 L50 62 M38 34 L50 22 L62 34" stroke="white" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 60 L50 78 L66 60" stroke="white" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
         </svg>
         Traffy
       </a>
-      <div class="flex items-center gap-3 sm:gap-6">
-        <div class="max-sm:hidden flex items-center gap-6">
+      
+      <div class="flex items-center gap-5 sm:gap-7">
+        <div class="hidden sm:flex items-center gap-6">
           <a href="#problem" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Problem</a>
           <a href="#features" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Features</a>
-          <a href="#tech" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Tech</a>
+          <a href="#tech" class="text-text-secondary text-xs font-medium no-underline hover:text-text transition-colors">Tech Specs</a>
         </div>
         <a href={DOWNLOAD_URL}
-           class="bg-accent text-white px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold no-underline hover:opacity-85 transition-opacity">
+           class="bg-accent text-white px-3.5 py-1.5 rounded-full text-xs font-semibold no-underline hover:scale-[1.03] transition-all hover:bg-accent/90 shadow-[0_4px_12px_rgba(88,86,214,0.3)]">
           Download
         </a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <slot />
 
   <!-- Footer -->
-  <footer class="border-t border-border py-12 px-6">
-    <div class="max-w-[980px] mx-auto flex flex-col items-center gap-4 text-center">
-      <div class="flex items-center gap-5 text-xs text-text-muted">
+  <footer class="border-t border-border py-14 px-6 bg-bg-elevated/20">
+    <div class="max-w-[760px] mx-auto flex flex-col items-center gap-5 text-center">
+      <div class="flex items-center gap-6 text-xs font-medium text-text-secondary">
         <a href={REPO_URL} class="no-underline hover:text-text transition-colors">GitHub</a>
         <a href={LICENSE_URL} class="no-underline hover:text-text transition-colors">MIT License</a>
-        <a href="https://psydevx.app" class="no-underline hover:text-accent transition-colors font-medium">Made by psydevx</a>
+        <a href="https://psydevx.app" class="no-underline hover:text-accent transition-colors">Made by psydevx</a>
       </div>
-      <p class="text-[11px] text-text-muted">&copy; 2026 Traffy</p>
+      <p class="text-[11px] text-text-muted font-mono tracking-wider">&copy; 2026 TRAFFY. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
@@ -93,7 +92,7 @@ import { DOWNLOAD_URL, REPO_URL, LICENSE_URL } from '../constants';
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>

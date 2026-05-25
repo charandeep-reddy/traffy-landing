@@ -1,30 +1,63 @@
-<section class="max-w-[900px] mx-auto px-6 py-[100px] pb-[120px]">
-  <div class="text-center mb-14 reveal">
-    <h2 class="font-display text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.03em] mb-3">Why it matters</h2>
-    <p class="text-text-secondary text-[17px]">Real problems your menu bars can't show you.</p>
+---
+// ScenariosSection.astro
+---
+
+<section class="max-w-[800px] mx-auto px-6 py-24 sm:py-32" id="scenarios">
+  <div class="text-center mb-16 reveal">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/15 text-accent text-[10px] font-bold uppercase tracking-wider mb-4">
+      Why it matters
+    </div>
+    <h2 class="font-display text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.03em] mb-4">
+      Real-life bottlenecks
+    </h2>
+    <p class="text-text-secondary text-[15px] sm:text-base">
+      Critical issues that traditional Wi-Fi signal bars can't reveal.
+    </p>
   </div>
 
   <div class="space-y-4">
-    <div class="bg-bg-elevated border border-border rounded-[20px] p-7 md:p-8 flex gap-5 reveal transition-all duration-700 ease-out hover:border-[rgba(255,255,255,0.12)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,122,255,0.06)]">
-      <div class="w-1 min-h-[48px] rounded-full shrink-0 mt-1 bg-danger"></div>
-      <div>
-        <h3 class="text-[17px] font-semibold mb-1.5">Your upload is stuck at <code class="font-mono text-sm text-danger bg-white/5 px-1.5 py-0.5 rounded">0 KB/s</code></h3>
-        <p class="text-text-secondary text-[15px] leading-relaxed">Dropbox isn't syncing — or your VPN is choking. The bars say full. Traffy says the truth.</p>
+    
+    <!-- Scenario 1 -->
+    <div class="bg-bg-elevated border border-white/5 rounded-3xl p-6 sm:p-7 flex gap-5 reveal transition-all duration-300 hover:border-white/10 hover:bg-[#0c0c11] shadow-[0_4px_20px_rgba(0,0,0,0.15)] group">
+      <div class="w-1 rounded-full shrink-0 bg-accent/70 group-hover:scale-y-105 transition-transform duration-300"></div>
+      <div class="flex-1">
+        <h3 class="text-[16px] font-bold mb-1.5 flex flex-wrap items-center gap-2">
+          Your upload is stuck at 
+          <code class="font-mono text-[13px] text-accent bg-accent-dim border border-accent/15 px-2 py-0.5 rounded-md font-semibold">0 KB/s</code>
+        </h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          Dropbox isn't syncing, iCloud backups have paused, or your corporate VPN is choking. The menu bar signal says full. Traffy reveals the zero throughput instantly.
+        </p>
       </div>
     </div>
-    <div class="bg-bg-elevated border border-border rounded-[20px] p-7 md:p-8 flex gap-5 reveal reveal-delay-1 transition-all duration-700 ease-out hover:border-[rgba(255,255,255,0.12)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,122,255,0.06)]">
-      <div class="w-1 min-h-[48px] rounded-full shrink-0 mt-1 bg-accent"></div>
-      <div>
-        <h3 class="text-[17px] font-semibold mb-1.5">You're on a call. The bars say full.</h3>
-        <p class="text-text-secondary text-[15px] leading-relaxed">But your upload is <code class="font-mono text-sm text-accent bg-white/5 px-1.5 py-0.5 rounded">0.2 Mbps</code>. Now you know why it stutters.</p>
+
+    <!-- Scenario 2 -->
+    <div class="bg-bg-elevated border border-white/5 rounded-3xl p-6 sm:p-7 flex gap-5 reveal reveal-delay-1 transition-all duration-300 hover:border-white/10 hover:bg-[#0c0c11] shadow-[0_4px_20px_rgba(0,0,0,0.15)] group">
+      <div class="w-1 rounded-full shrink-0 bg-accent/70 group-hover:scale-y-105 transition-transform duration-300"></div>
+      <div class="flex-1">
+        <h3 class="text-[16px] font-bold mb-1.5 flex flex-wrap items-center gap-2">
+          Your Zoom call freezes mid-meeting
+        </h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          The router is close, signal is 100%. But your upload bandwidth just tanked to
+          <code class="font-mono text-[13px] text-accent bg-accent-dim border border-accent/15 px-2 py-0.5 rounded-md font-semibold">0.2 Mbps</code>.
+          Now you know exactly why your audio is stuttering.
+        </p>
       </div>
     </div>
-    <div class="bg-bg-elevated border border-border rounded-[20px] p-7 md:p-8 flex gap-5 reveal reveal-delay-2 transition-all duration-700 ease-out hover:border-[rgba(255,255,255,0.12)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,122,255,0.06)]">
-      <div class="w-1 min-h-[48px] rounded-full shrink-0 mt-1 bg-danger"></div>
-      <div>
-        <h3 class="text-[17px] font-semibold mb-1.5">Your download drops mid-stream</h3>
-        <p class="text-text-secondary text-[15px] leading-relaxed">4K buffer emptying. Traffy catches it in real-time — so you know it's the network, not your setup.</p>
+
+    <!-- Scenario 3 -->
+    <div class="bg-bg-elevated border border-white/5 rounded-3xl p-6 sm:p-7 flex gap-5 reveal reveal-delay-2 transition-all duration-300 hover:border-white/10 hover:bg-[#0c0c11] shadow-[0_4px_20px_rgba(0,0,0,0.15)] group">
+      <div class="w-1 rounded-full shrink-0 bg-accent/70 group-hover:scale-y-105 transition-transform duration-300"></div>
+      <div class="flex-1">
+        <h3 class="text-[16px] font-bold mb-1.5 flex flex-wrap items-center gap-2">
+          Video streaming buffer drops to zero
+        </h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          Your movie freezes on the screen. Traffy lets you monitor download rates in real-time, helping you instantly isolate whether it is a local device crash or network-side provider lag.
+        </p>
       </div>
     </div>
+
   </div>
 </section>
